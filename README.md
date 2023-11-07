@@ -1,5 +1,4 @@
 # project3
-# project3
 Development of a Full-Stack Data Visualization Web Application for Interactive Exploration of Datasets: Analysis and Visualization of Sustainable Energy Trends (Project1)
 
 # Why we choose this topic:
