@@ -24,6 +24,10 @@ In the preceding project1  https://github.com/yosieph/Project1
 ###  3. How does climate change affect specific countries or regions in terms of their energy practices and policies? 
 
 # Data analysis process 
-
+### Datasets to be used 
+weatherstack - Real-Time World Weather REST API 
+https://www.kaggle.com/datasets/anshtanwar/global-data-on-sustainable-energy, 
+https://www.kaggle.com/datasets/nelgiriyewithana/countries-of-the-world-2023
+Global Country Information Dataset 2023 (kaggle.com) 
 
 ## Data Collection  
