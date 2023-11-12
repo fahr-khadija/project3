@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/sustainable_energy_data', methods=['GET'])
 def get_sustainable_energy_data():
-    df = pd.read_csv('path_to_sustainable_energy_dataset.csv')  # Replace with the actual path
+    df = pd.read_csv('projectdata.csv')  # Replace with the actual path
     # Perform data cleaning if necessary
     return jsonify(df.to_dict())
 
