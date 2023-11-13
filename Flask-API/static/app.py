@@ -52,7 +52,7 @@ def all_data():
     climate_data = pd.read_sql_table('climate', engine)
 
 #return json data   
-    return jsonify(climate_data.to_dict(orient='records'))
+    return jsonify(climate_data.to_dict(orient='index'))
 
 #close session
 session.close()
