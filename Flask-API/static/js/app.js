@@ -2,38 +2,44 @@
 //const url = "projectdata_modified.json"; 
 const url = '/static/projectdata_modified.json';
 // Create a horizontal bar chart with a dropdown menu to display data for the selected country.
+// Modify the barChart function for better visualization of two selected countries
+// Modify the barChart function to display entries on the x-axis and values on the y-axis
 
-// Function for bar chart plotting
-function barChart(selection) {
-  // Fetch the JSON data and console log it
+function barChart(selectedCountries) {
   d3.json(url).then((data) => {
+    // Fetch the JSON data and console log it
     console.log(`Data:`, data);
-
     let countryDataList = data.projectdata;
-
-    // Filter data where Country matches the selection
-    let selectedCountryData = countryDataList.find(
-      (countryData) => countryData.Country === selection
+    let selectedCountriesData = countryDataList.filter((countryData) =>
+      selectedCountries.includes(countryData.Country)
     );
 
-    // Trace data for the bar chart
-    let trace = [
-      {
-        x: Object.values(selectedCountryData).slice(1, 11).reverse(), 
-        y: Object.keys(selectedCountryData).slice(1, 11).reverse(),
-        type: "bar",
-        marker: {
-          color: "rgb(255, 127, 14)",
-        },
-        orientation: "h",
+    let trace = selectedCountriesData.map((selectedCountryData, index) => ({
+      x: Object.values(selectedCountryData).slice(1, 11).reverse(), // Use values for x-axis
+      y: Object.keys(selectedCountryData).slice(1, 11).reverse(), // Use entries  for y-axis
+      type: 'bar',
+      marker: {
+        // Blue for the first country, red for the second
+        color: index === 0 ? 'rgba(55, 128, 191, 0.7)' : 'rgba(255, 0, 0, 0.7)', 
       },
-    ];
+      name: selectedCountryData.Country,
+      orientation: 'h',
+    }));
 
-    // Use Plotly to plot the bar chart
-    Plotly.newPlot("bar", trace);
+    const layout = {
+      title: 'Bar Chart Title',
+      xaxis: {
+        title: 'X-Axis Title',
+      },
+      yaxis: {
+        title: 'Y-Axis Title',
+        automargin: true,
+      },
+    };
+
+    Plotly.newPlot('barChart', trace, layout);
   });
-}
-
+};
 // Function that builds the bubble chart
 function bubbleChart(selection) {
   // Fetch the JSON data

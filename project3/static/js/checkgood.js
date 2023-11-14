@@ -16,6 +16,7 @@ const bubbleLayout = {
 // Modify the barChart function to display entries on the x-axis and values on the y-axis
 function barChart(selectedCountries) {
     d3.json(url).then((data) => {
+      console.log(`Data:`, data);
       let countryDataList = data.projectdata;
       let selectedCountriesData = countryDataList.filter((countryData) =>
         selectedCountries.includes(countryData.Country)
@@ -26,7 +27,8 @@ function barChart(selectedCountries) {
         y: Object.keys(selectedCountryData).slice(1, 11).reverse(), // Use keys (entries) for y-axis
         type: 'bar',
         marker: {
-          color: index === 0 ? 'rgba(55, 128, 191, 0.7)' : 'rgba(255, 0, 0, 0.7)', // Blue for the first country, red for the second
+          // Blue for the first country, red for the second
+          color: index === 0 ? 'rgba(55, 128, 191, 0.7)' : 'rgba(255, 0, 0, 0.7)', 
         },
         name: selectedCountryData.Country,
         orientation: 'h',
