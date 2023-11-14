@@ -7,11 +7,6 @@ let dropdownMenu2 = d3.select('#selCountry2');
 // Put your URL in a URL variable
 const url = '/static/projectdata_modified.json';
 
-// Dummy layout for the bubble chart, customize as needed
-const bubbleLayout = {
-  xaxis: { title: 'Attribute' },
-};
-
 // Modify the barChart function for better visualization of two selected countries
 // Modify the barChart function to display entries on the x-axis and values on the y-axis
 function barChart(selectedCountries) {
@@ -126,7 +121,9 @@ function optionChanged(countryType, selectedCountry) {
       let selectedCountriesData = countryDataList.filter((countryData) =>
         selectedCountries.includes(countryData.Country)
       );
-  
+      const bubbleLayout = {
+         xaxis: { title: 'Attribute' },
+      };
       let trace = selectedCountriesData.map((selectedCountryData, index) => ({
         x: Object.keys(selectedCountryData).slice(1),
         y: Object.values(selectedCountryData).slice(1),
