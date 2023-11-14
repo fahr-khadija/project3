@@ -137,6 +137,9 @@ countryList.forEach((country) => {
   dropdownMenu2.append('option').text(country).property('value', country);
 });
 
+// Select initial countries based on dropdown selections
+let initialCountry1 = dropdownMenu1.property('value');
+let initialCountry2 = dropdownMenu2.property('value');
 
 
 
