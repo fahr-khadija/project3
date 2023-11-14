@@ -131,7 +131,7 @@ function scatterPlot(selectedCountries) {
         title: 'Y-Axis entries names',
       },
     };
-
+    // Plot the scatterPlot  with the selected country
     Plotly.newPlot('scatterPlot', traces, layout);
   });
 }
