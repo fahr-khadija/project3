@@ -132,6 +132,10 @@ countryList.forEach((country) => {
   dropdownMenu1.append('option').text(country).property('value', country);
 });
 
+// Populate Country2 dropdown
+countryList.forEach((country) => {
+  dropdownMenu2.append('option').text(country).property('value', country);
+});
 
 
 
