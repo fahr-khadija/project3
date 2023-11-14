@@ -30,10 +30,10 @@ function barChart(selectedCountries) {
     const layout = {
       title: 'Bar Chart visualisation',
       xaxis: {
-        title: 'X-Axis entries value',
+        title: 'X-Axis entries values',
       },
       yaxis: {
-        title: 'Y-Axis entries name',
+        title: 'Y-Axis entries names',
         automargin: true,
       },
     };
