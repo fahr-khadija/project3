@@ -2,7 +2,8 @@
 //const url = "http://localhost:8000/projectdata_modified.json"; 
 // put the db under static so  flask can take it 
    const url = '/static/projectdata_modified.json';
-// Create a horizontal bar chart with a dropdown menu to display data for the selected country.
+
+ // Create a horizontal bar chart with a dropdown menu to display data for the selected country.
 // Modify the barChart function for better visualization of two selected countries
 // Modify the barChart function to display entries on the y-axis and values on the x-axis with 2 colors for the countries selected 
 
@@ -50,7 +51,9 @@ function barChart(selectedCountries) {
       let selectedCountriesData = countryDataList.filter((countryData) =>
         selectedCountries.includes(countryData.Country)
       );
-  
+      const bubbleLayout = {
+        xaxis: { title: 'Attribute' },
+       };  
       let trace = selectedCountriesData.map((selectedCountryData, index) => ({
         x: Object.keys(selectedCountryData).slice(1),
         y: Object.values(selectedCountryData).slice(1),
@@ -69,6 +72,40 @@ function barChart(selectedCountries) {
     });
   }
 
+// Function for scatter plot
+function scatterPlot(selectedCountries) {
+  d3.json(url).then((data) => {
+    let countryDataList = data.projectdata;
+    let selectedCountriesData = countryDataList.filter((countryData) =>
+      selectedCountries.includes(countryData.Country)
+    );
+
+    let traces = selectedCountriesData.map((selectedCountryData, index) => ({
+      x: Object.values(selectedCountryData).slice(1, 11),
+      y: Object.values(selectedCountryData).slice(11, 21),
+      mode: 'markers',
+      type: 'scatter',
+      name: selectedCountryData.Country,
+      text: Object.values(selectedCountryData).slice(1, 11).map((value, i) => `${Object.keys(selectedCountryData)[i + 1]}: ${value}`),
+      marker: {
+        size: 10,
+        color: index === 0 ? 'rgba(55, 128, 191, 0.7)' : 'rgba(255, 0, 0, 0.7)', // Blue for the first country, red for the second
+      },
+    }));
+
+    const layout = {
+      title: 'Scatter Plot visualisation',
+      xaxis: {
+        title: 'X-Axis entries values',
+      },
+      yaxis: {
+        title: 'Y-Axis entries names',
+      },
+    };
+    // Plot the scatterPlot  with the selected countries
+    Plotly.newPlot('scatterPlot', traces, layout);
+  });
+}
 // function "demog" to filter data for selected country and update the html accordingly based on the selected country
 function demog(selectedCountries) {
   // Fetch the JSON data and console log it
@@ -98,37 +135,147 @@ function demog(selectedCountries) {
   });
 
 }
+ //  //  //  //  // Dropdown Menu //  //  //  //  //
+// put a variable for Dropdown Menu for Country1
+let dropdownMenu1 = d3.select('#selCountry1');
 
-// Function to plot all charts when we have a new selection
-function plot(selection) {
-  console.log(selection);
-  demog(selection);
-  barChart(selection);
-  bubbleChart(selection);
-  // Add other charts as needed
+// put a variable for Dropdown Menu for Country2 
+let dropdownMenu2 = d3.select('#selCountry2');
+
+// Fetch the JSON data and console log it
+d3.json(url).then(function (data) {
+  let countryList = data.projectdata.map((countryData) => countryData.Country);
+
+// Populate Country1 dropdown
+countryList.forEach((country) => {
+  dropdownMenu1.append('option').text(country).property('value', country);
+});
+
+// Populate Country2 dropdown
+countryList.forEach((country) => {
+  dropdownMenu2.append('option').text(country).property('value', country);
+});
+
+// Select initial countries based on dropdown selections
+let initialCountry1 = dropdownMenu1.property('value');
+let initialCountry2 = dropdownMenu2.property('value');
+ // Pass the initial selections as an array
+ plot([initialCountry1, initialCountry2]);
+});
+
+// Listen for changes on the dropdowns menu for Country1
+dropdownMenu1.on('change', function () {
+  let selectedCountry1 = dropdownMenu1.property('value');
+  let selectedCountry2 = dropdownMenu2.property('value');
+  plot([selectedCountry1, selectedCountry2]);
+
+  // Update Country1 Info
+  optionChanged('1', selectedCountry1);
+});
+// Listen for changes on the dropdowns menu for Country2
+dropdownMenu2.on('change', function () {
+  let selectedCountry1 = dropdownMenu1.property('value');
+  let selectedCountry2 = dropdownMenu2.property('value');
+  plot([selectedCountry1, selectedCountry2]);
+
+  // Update Country2 Info
+  optionChanged('2', selectedCountry2);
+});
+ //  //  //  //  // 
+
+// Function to update info based on selected country
+function optionChanged(countryType, selectedCountry) {
+  d3.json(url).then((data) => {
+    let countryDataList = data.projectdata;
+    let selectedCountryData = countryDataList.find((countryData) => countryData.Country === selectedCountry);
+
+    // Update the HTML elements with the information
+    let infoPanel = d3.select(`#sample-metadata${countryType}`);
+    infoPanel.html('');
+
+    Object.entries(selectedCountryData).forEach(([key, value]) => {
+      infoPanel.append('h5').text(`${key}: ${value}`);
+    });
+  });
 }
+
+// Function to plot all charts when we have new selections for country 
+function plot(selectedCountries) {
+  console.log(selectedCountries);
+  demog(selectedCountries);
+  barChart(selectedCountries);
+  bubbleChart(selectedCountries);
+  scatterPlot(selectedCountries);
+  //createMap(selectedCountries);
+}
+
 
 // Initiation function
 function init() {
   // Dropdown Menu
-  let dropdownMenu = d3.select("#selDataset");
+  let dropdownMenu = d3.select('#selDataset');
 
   // Fetch the JSON data and console log it
   d3.json(url).then(function (data) {
     let countryList = data.projectdata.map((countryData) => countryData.Country);
 
     countryList.forEach((country) => {
-      dropdownMenu.append("option").text(country).property("value", country);
+      dropdownMenu.append('option').text(country).property('value', country);
     });
-
-    let initialCountry = countryList[0];
-    plot(initialCountry);
+// Select the first two countries algeria and angola 
+    let initialCountries = countryList.slice(0, 2); 
+    // Plot the initial selection as an array
+    plot(initialCountries); 
   });
 
-  dropdownMenu.on("change", function () {
-    let selectedCountry = d3.select("#selDataset").node().value;
-    plot(selectedCountry);
+  dropdownMenu.on('change', function () {
+    let selectedCountries = d3.select('#selDataset').selectAll('option:checked').nodes().map(option => option.value);
+    plot(selectedCountries);
   });
-}
+};
+
+//  //  //  //  // //  //  //  //  // //  //  //  //  // 
+
+// Function to create a map
+function createMap(selectedCountries) {
+  // Fetch the JSON data and console log it
+  d3.json(url).then((data) => {
+    let countryDataList = data.projectdata;
+    let selectedCountriesData = countryDataList.filter((countryData) =>
+      selectedCountries.includes(countryData.Country)
+    );
+  });
+    //  map setup
+let myMap = L.map('map').setView([37.09, -95.71], 5);
+// Create the base layers.
+let street = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(myMap);
+
+let topo = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+  attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+});
+
+// Create a baseMaps object.
+let baseMaps = {
+  "Street Map": street,
+  "Topographic Map": topo
+};
+
+    // Add markers for selected countries
+    selectedCountriesData.forEach((selectedCountryData) => {
+      let lat = parseFloat(selectedCountryData.Latitude);
+      let lon = parseFloat(selectedCountryData.Longitude);
+
+      if (!isNaN(lat) && !isNaN(lon)) {
+        L.marker([lat, lon])
+          .addTo(map)
+          .bindPopup(selectedCountryData.Country)
+          .openPopup();
+      }
+    });
+  };
+
+//  //  //  //  // //  //  //  //  // 
 
 init();

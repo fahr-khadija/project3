@@ -7,11 +7,6 @@ let dropdownMenu2 = d3.select('#selCountry2');
 // Put your URL in a URL variable
 const url = '/static/projectdata_modified.json';
 
-// Dummy layout for the bubble chart, customize as needed
-const bubbleLayout = {
-  xaxis: { title: 'Attribute' },
-};
-
 // Modify the barChart function for better visualization of two selected countries
 // Modify the barChart function to display entries on the x-axis and values on the y-axis
 function barChart(selectedCountries) {
@@ -126,7 +121,9 @@ function optionChanged(countryType, selectedCountry) {
       let selectedCountriesData = countryDataList.filter((countryData) =>
         selectedCountries.includes(countryData.Country)
       );
-  
+      const bubbleLayout = {
+         xaxis: { title: 'Attribute' },
+      };
       let trace = selectedCountriesData.map((selectedCountryData, index) => ({
         x: Object.keys(selectedCountryData).slice(1),
         y: Object.values(selectedCountryData).slice(1),
@@ -143,7 +140,6 @@ function optionChanged(countryType, selectedCountry) {
     });
   }
   
-  // Other functions and initialization remain unchanged
   
 // Function to plot all charts when we have new selections
 function plot(selectedCountries) {
@@ -202,8 +198,8 @@ d3.json(url).then(function (data) {
   // Select initial countries based on dropdown selections
   let initialCountry1 = dropdownMenu1.property('value');
   let initialCountry2 = dropdownMenu2.property('value');
-
-  plot([initialCountry1, initialCountry2]); // Pass the initial selections as an array
+  // Pass the initial selections as an array
+  plot([initialCountry1, initialCountry2]);
 });
 
 
@@ -252,20 +248,22 @@ function createMap(selectedCountries) {
       selectedCountries.includes(countryData.Country)
     );
   });
-    // Initialize the map
-      let map = L.map('interactiveMap').setView([0, 0], 2);
+    //  map setup
+let myMap = L.map('map').setView([37.09, -95.71], 5);
+// Create the base layers.
+let street = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(myMap);
 
-// Add a tile layer to the map
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap contributors'
-}).addTo(map);
+let topo = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+  attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+});
 
-// Add a marker for testing
-L.marker([0, 0]).addTo(map);
-    // Add a tile layer (you can customize the tile layer URL)
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© OpenStreetMap contributors',
-    }).addTo(map);
+// Create a baseMaps object.
+let baseMaps = {
+  "Street Map": street,
+  "Topographic Map": topo
+};
 
     // Add markers for selected countries
     selectedCountriesData.forEach((selectedCountryData) => {
