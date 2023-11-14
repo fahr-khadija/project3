@@ -226,9 +226,10 @@ function init() {
     countryList.forEach((country) => {
       dropdownMenu.append('option').text(country).property('value', country);
     });
-
-    let initialCountries = countryList.slice(0, 2); // Select the first two countries
-    plot(initialCountries); // Pass the initial selection as an array
+// Select the first two countries algeria and angola 
+    let initialCountries = countryList.slice(0, 2); 
+    // Plot the initial selection as an array
+    plot(initialCountries); 
   });
 
   dropdownMenu.on('change', function () {
