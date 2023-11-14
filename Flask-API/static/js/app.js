@@ -200,9 +200,6 @@ function optionChanged(countryType, selectedCountry) {
 }
 
 
-
-
-
 // Function to plot all charts when we have new selections for country 
 function plot(selectedCountries) {
   console.log(selectedCountries);
@@ -210,7 +207,7 @@ function plot(selectedCountries) {
   barChart(selectedCountries);
   bubbleChart(selectedCountries);
   scatterPlot(selectedCountries);
-  createMap(selectedCountries);
+  //createMap(selectedCountries);
 }
 
 
