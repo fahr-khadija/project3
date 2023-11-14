@@ -13,7 +13,7 @@ CORS(app)
 # Flask Routes
 @app.route("/")
 def homepage():
-    return render_template("index.html")
+    return render_template("index2.html")
 
 if __name__ == '__main__':
     app.run(debug=True)
