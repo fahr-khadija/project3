@@ -248,19 +248,22 @@ function createMap(selectedCountries) {
       selectedCountries.includes(countryData.Country)
     );
   });
-    // Initialize the map
-      let map = L.map('interactiveMap').setView([0, 0], 2);
+    //  map setup
+let myMap = L.map('map').setView([37.09, -95.71], 5);
+// Create the base layers.
+let street = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(myMap);
 
-// Add a tile layer to the map
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: 'Countries localisation Map'
-}).addTo(map);
+let topo = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+  attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+});
 
-// Add a marker for testing
-L.marker([0, 0]).addTo(map);
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: 'Countries localisation marker ',
-    }).addTo(map);
+// Create a baseMaps object.
+let baseMaps = {
+  "Street Map": street,
+  "Topographic Map": topo
+};
 
     // Add markers for selected countries
     selectedCountriesData.forEach((selectedCountryData) => {
