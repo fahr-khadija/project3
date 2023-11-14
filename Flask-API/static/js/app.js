@@ -104,6 +104,16 @@ let dropdownMenu1 = d3.select('#selCountry1');
 // put a variable for Dropdown Menu for Country2 
 let dropdownMenu2 = d3.select('#selCountry2');
 
+// Listen for changes on the dropdowns
+dropdownMenu1.on('change', function () {
+  let selectedCountry1 = dropdownMenu1.property('value');
+  let selectedCountry2 = dropdownMenu2.property('value');
+  plot([selectedCountry1, selectedCountry2]);
+
+  // Update Country1 Info
+  optionChanged('1', selectedCountry1);
+});
+
 // Function to plot all charts when we have a new selection
 function plot(selection) {
   console.log(selection);
