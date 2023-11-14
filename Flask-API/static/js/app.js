@@ -69,34 +69,19 @@ function barChart(selectedCountries) {
     });
   }
 
-// Demographic function "demog"
-function demog(selection) {
+// function "demog"
+function demog(selectedCountries) {
   // Fetch the JSON data and console log it
   d3.json(url).then((data) => {
     console.log(`Data:`, data);
 
     let countryDataList = data.projectdata;
 
-    // Filter data where Country matches the selection
-    let selectedCountryData = countryDataList.find(
-      (countryData) => countryData.Country === selection
+    // Filter data for selected countries
+    let selectedCountriesData = countryDataList.filter((countryData) =>
+      selectedCountries.includes(countryData.Country)
     );
 
-    d3.select("#country").html("");
-
-    let selectMetaData = Object.entries(selectedCountryData);
-
-    // Iterate through the selectMetaData array
-    selectMetaData.forEach(([key, value]) => {
-      d3.select("#country")
-        .append("h5")
-        .text(`${key}: ${value}`);
-    });
-
-    // Log the entries array
-    console.log(country);
-  });
-}
 
 // Function to plot all charts when we have a new selection
 function plot(selection) {
