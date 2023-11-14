@@ -82,6 +82,22 @@ function demog(selectedCountries) {
       selectedCountries.includes(countryData.Country)
     );
 
+    // Update the HTML elements with the information
+    selectedCountriesData.forEach((selectedCountryData, index) => {
+      let infoPanel = d3.select(`#sample-metadata${index + 1}`);
+      infoPanel.html('');
+
+      // Iterate through the selectedCountryData object
+      Object.entries(selectedCountryData).forEach(([key, value]) => {
+        infoPanel.append('h5').text(`${key}: ${value}`);
+      });
+    });
+
+    // Log the entries array
+    console.log(selectedCountriesData);
+  });
+
+}
 
 // Function to plot all charts when we have a new selection
 function plot(selection) {
