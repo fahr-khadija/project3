@@ -69,7 +69,7 @@ function barChart(selectedCountries) {
     });
   }
 
-// function "demog"
+// function "demog" to filter data for selected country and update the html accordingly based on the selected country
 function demog(selectedCountries) {
   // Fetch the JSON data and console log it
   d3.json(url).then((data) => {
