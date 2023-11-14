@@ -143,7 +143,6 @@ function optionChanged(countryType, selectedCountry) {
     });
   }
   
-  // Other functions and initialization remain unchanged
   
 // Function to plot all charts when we have new selections
 function plot(selectedCountries) {
@@ -202,8 +201,8 @@ d3.json(url).then(function (data) {
   // Select initial countries based on dropdown selections
   let initialCountry1 = dropdownMenu1.property('value');
   let initialCountry2 = dropdownMenu2.property('value');
-
-  plot([initialCountry1, initialCountry2]); // Pass the initial selections as an array
+  // Pass the initial selections as an array
+  plot([initialCountry1, initialCountry2]);
 });
 
 
@@ -257,14 +256,13 @@ function createMap(selectedCountries) {
 
 // Add a tile layer to the map
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap contributors'
+    attribution: 'Countries localisation Map'
 }).addTo(map);
 
 // Add a marker for testing
 L.marker([0, 0]).addTo(map);
-    // Add a tile layer (you can customize the tile layer URL)
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© OpenStreetMap contributors',
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: 'Countries localisation marker ',
     }).addTo(map);
 
     // Add markers for selected countries
