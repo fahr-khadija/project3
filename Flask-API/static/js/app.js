@@ -93,7 +93,7 @@ function demog(selectedCountries) {
       });
     });
 
-    // Log the entries array
+    // Log the entries array to the  console
     console.log(selectedCountriesData);
   });
 
