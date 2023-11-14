@@ -140,7 +140,9 @@ countryList.forEach((country) => {
 // Select initial countries based on dropdown selections
 let initialCountry1 = dropdownMenu1.property('value');
 let initialCountry2 = dropdownMenu2.property('value');
-
+ // Pass the initial selections as an array
+ plot([initialCountry1, initialCountry2]);
+});
 
 
 

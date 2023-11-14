@@ -201,8 +201,8 @@ d3.json(url).then(function (data) {
   // Select initial countries based on dropdown selections
   let initialCountry1 = dropdownMenu1.property('value');
   let initialCountry2 = dropdownMenu2.property('value');
-
-  plot([initialCountry1, initialCountry2]); // Pass the initial selections as an array
+  // Pass the initial selections as an array
+  plot([initialCountry1, initialCountry2]);
 });
 
 
