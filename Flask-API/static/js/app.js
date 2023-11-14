@@ -58,6 +58,7 @@ function barChart(selectedCountries) {
         mode: 'markers',
         marker: {
           size: 100,
+          // add Blue for the first country, red for the second
           color: index === 0 ? 'rgba(55, 128, 191, 0.7)' : 'rgba(255, 0, 0, 0.7)', // Blue for the first country, red for the second
         },
         name: selectedCountryData.Country,
