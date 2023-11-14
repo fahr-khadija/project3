@@ -143,7 +143,6 @@ function optionChanged(countryType, selectedCountry) {
     });
   }
   
-  // Other functions and initialization remain unchanged
   
 // Function to plot all charts when we have new selections
 function plot(selectedCountries) {

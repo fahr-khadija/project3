@@ -123,6 +123,25 @@ dropdownMenu2.on('change', function () {
   optionChanged('2', selectedCountry2);
 });
 
+// Fetch the JSON data and console log it
+d3.json(url).then(function (data) {
+  let countryList = data.projectdata.map((countryData) => countryData.Country);
+
+// Populate Country1 dropdown
+countryList.forEach((country) => {
+  dropdownMenu1.append('option').text(country).property('value', country);
+});
+
+
+
+
+
+
+
+
+
+
+
 // Function to plot all charts when we have a new selection
 function plot(selection) {
   console.log(selection);
@@ -131,6 +150,7 @@ function plot(selection) {
   bubbleChart(selection);
   // Add other charts as needed
 }
+
 
 // Initiation function
 function init() {
