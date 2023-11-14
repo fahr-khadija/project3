@@ -50,7 +50,8 @@ def welcome():
 def all_data():
 
     climate_data = pd.read_sql_table('climate', engine)
-
+    climate_data.set_index("country", inplace=True)
+    
 #return json data   
     return jsonify(climate_data.to_dict(orient='index'))
 
