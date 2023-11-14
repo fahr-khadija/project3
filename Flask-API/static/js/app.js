@@ -125,10 +125,10 @@ function scatterPlot(selectedCountries) {
     const layout = {
       title: 'Scatter Plot visualisation',
       xaxis: {
-        title: 'X-Axis Title',
+        title: 'X-Axis entries values',
       },
       yaxis: {
-        title: 'Y-Axis Title',
+        title: 'Y-Axis entries names',
       },
     };
 
