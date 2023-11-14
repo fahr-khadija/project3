@@ -87,7 +87,7 @@ function demog(selectedCountries) {
       let infoPanel = d3.select(`#sample-metadata${index + 1}`);
       infoPanel.html('');
 
-      // Iterate through the selectedCountryData object
+      // Iterate through the selectedCountryData object and console for each country
       Object.entries(selectedCountryData).forEach(([key, value]) => {
         infoPanel.append('h5').text(`${key}: ${value}`);
       });
