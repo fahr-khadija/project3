@@ -19,7 +19,7 @@ function barChart(selectedCountries) {
       y: Object.keys(selectedCountryData).slice(1, 11).reverse(), // Use entries  for y-axis
       type: 'bar',
       marker: {
-        // Blue for the first country, red for the second
+        // add Blue for the first country, red for the second
         color: index === 0 ? 'rgba(55, 128, 191, 0.7)' : 'rgba(255, 0, 0, 0.7)', 
       },
       name: selectedCountryData.Country,
@@ -39,6 +39,7 @@ function barChart(selectedCountries) {
     Plotly.newPlot('barChart', trace, layout);
   });
 };
+
 // Function that builds the bubble chart
 function bubbleChart(selection) {
   // Fetch the JSON data
