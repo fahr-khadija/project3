@@ -42,8 +42,7 @@ function barChart(selectedCountries) {
 };
 
 // Function that builds the bubble chart
-  
-  // Modify the bubbleChart function for better visualization of two selected countries
+// Modify the bubbleChart function for better visualization of two selected countries
   function bubbleChart(selectedCountries) {
     // Fetch the JSON data 
     d3.json(url).then((data) => {
