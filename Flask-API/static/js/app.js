@@ -6,9 +6,9 @@ const url = '/static/projectdata_modified.json';
 // Modify the barChart function to display entries on the y-axis and values on the x-axis
 
 function barChart(selectedCountries) {
+ // Fetch the JSON data and console log it
   d3.json(url).then((data) => {
-    // Fetch the JSON data and console log it
-    console.log(`Data:`, data);
+     console.log(`Data:`, data);
     let countryDataList = data.projectdata;
     let selectedCountriesData = countryDataList.filter((countryData) =>
       selectedCountries.includes(countryData.Country)
