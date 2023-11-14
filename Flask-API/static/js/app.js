@@ -3,7 +3,7 @@
 const url = '/static/projectdata_modified.json';
 // Create a horizontal bar chart with a dropdown menu to display data for the selected country.
 // Modify the barChart function for better visualization of two selected countries
-// Modify the barChart function to display entries on the x-axis and values on the y-axis
+// Modify the barChart function to display entries on the y-axis and values on the x-axis
 
 function barChart(selectedCountries) {
   d3.json(url).then((data) => {
@@ -27,12 +27,12 @@ function barChart(selectedCountries) {
     }));
 
     const layout = {
-      title: 'Bar Chart Title',
+      title: 'Bar Chart visualisation',
       xaxis: {
-        title: 'X-Axis Title',
+        title: 'X-Axis value',
       },
       yaxis: {
-        title: 'Y-Axis Title',
+        title: 'Y-Axis entries',
         automargin: true,
       },
     };
