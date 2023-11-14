@@ -63,10 +63,12 @@ function barChart(selectedCountries) {
         },
         name: selectedCountryData.Country,
       }));
-  
-      Plotly.newPlot('bubbleChart', trace, bubbleLayout);
+       // Plot the bubble chart with the selected country
+       Plotly.newPlot('bubbleChart', trace, bubbleLayout);
+
     });
   }
+
 // Demographic function "demog"
 function demog(selection) {
   // Fetch the JSON data and console log it
