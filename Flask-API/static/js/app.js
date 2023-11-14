@@ -72,35 +72,6 @@ function barChart(selectedCountries) {
     });
   }
 
-// function "demog" to filter data for selected country and update the html accordingly based on the selected country
-function demog(selectedCountries) {
-  // Fetch the JSON data and console log it
-  d3.json(url).then((data) => {
-    console.log(`Data:`, data);
-
-    let countryDataList = data.projectdata;
-
-    // Filter data for selected countries
-    let selectedCountriesData = countryDataList.filter((countryData) =>
-      selectedCountries.includes(countryData.Country)
-    );
-
-    // Update the HTML elements with the information
-    selectedCountriesData.forEach((selectedCountryData, index) => {
-      let infoPanel = d3.select(`#sample-metadata${index + 1}`);
-      infoPanel.html('');
-
-      // Iterate through the selectedCountryData object and console for each country
-      Object.entries(selectedCountryData).forEach(([key, value]) => {
-        infoPanel.append('h5').text(`${key}: ${value}`);
-      });
-    });
-
-    // Log the entries array to the  console
-    console.log(selectedCountriesData);
-  });
-
-}
 // Function for scatter plot
 function scatterPlot(selectedCountries) {
   d3.json(url).then((data) => {
@@ -131,11 +102,39 @@ function scatterPlot(selectedCountries) {
         title: 'Y-Axis entries names',
       },
     };
-    // Plot the scatterPlot  with the selected country
+    // Plot the scatterPlot  with the selected countries
     Plotly.newPlot('scatterPlot', traces, layout);
   });
 }
+// function "demog" to filter data for selected country and update the html accordingly based on the selected country
+function demog(selectedCountries) {
+  // Fetch the JSON data and console log it
+  d3.json(url).then((data) => {
+    console.log(`Data:`, data);
 
+    let countryDataList = data.projectdata;
+
+    // Filter data for selected countries
+    let selectedCountriesData = countryDataList.filter((countryData) =>
+      selectedCountries.includes(countryData.Country)
+    );
+
+    // Update the HTML elements with the information
+    selectedCountriesData.forEach((selectedCountryData, index) => {
+      let infoPanel = d3.select(`#sample-metadata${index + 1}`);
+      infoPanel.html('');
+
+      // Iterate through the selectedCountryData object and console for each country
+      Object.entries(selectedCountryData).forEach(([key, value]) => {
+        infoPanel.append('h5').text(`${key}: ${value}`);
+      });
+    });
+
+    // Log the entries array to the  console
+    console.log(selectedCountriesData);
+  });
+
+}
  //  //  //  //  // Dropdown Menu //  //  //  //  //
 // put a variable for Dropdown Menu for Country1
 let dropdownMenu1 = d3.select('#selCountry1');
@@ -183,7 +182,22 @@ dropdownMenu2.on('change', function () {
   optionChanged('2', selectedCountry2);
 });
  //  //  //  //  // 
+ 
+// Function to update info based on selected country
+function optionChanged(countryType, selectedCountry) {
+  d3.json(url).then((data) => {
+    let countryDataList = data.projectdata;
+    let selectedCountryData = countryDataList.find((countryData) => countryData.Country === selectedCountry);
 
+    // Update the HTML elements with the information
+    let infoPanel = d3.select(`#sample-metadata${countryType}`);
+    infoPanel.html('');
+
+    Object.entries(selectedCountryData).forEach(([key, value]) => {
+      infoPanel.append('h5').text(`${key}: ${value}`);
+    });
+  });
+}
 
 
 
