@@ -98,6 +98,11 @@ function demog(selectedCountries) {
   });
 
 }
+// Dropdown Menu for Country1
+let dropdownMenu1 = d3.select('#selCountry1');
+
+// Dropdown Menu for Country2
+let dropdownMenu2 = d3.select('#selCountry2');
 
 // Function to plot all charts when we have a new selection
 function plot(selection) {
