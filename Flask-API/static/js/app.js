@@ -36,7 +36,6 @@ function barChart(selectedCountries) {
         automargin: true,
       },
     };
-
     Plotly.newPlot('barChart', trace, layout);
   });
 };
