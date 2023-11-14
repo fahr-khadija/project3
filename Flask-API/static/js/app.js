@@ -1,6 +1,7 @@
-// Put json file  in a URL variable
+// Put json file  in a const URL 
 //const url = "http://localhost:8000/projectdata_modified.json"; 
-const url = '/static/projectdata_modified.json';
+// put the db under static so  flask can take it 
+   const url = '/static/projectdata_modified.json';
 // Create a horizontal bar chart with a dropdown menu to display data for the selected country.
 // Modify the barChart function for better visualization of two selected countries
 // Modify the barChart function to display entries on the y-axis and values on the x-axis with 2 colors for the countries selected 
