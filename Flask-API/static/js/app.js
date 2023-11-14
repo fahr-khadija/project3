@@ -1,6 +1,6 @@
-// Put your URL in a URL variable
-const url = "projectdata_modified.json"; 
-
+// Put json file  in a URL variable
+//const url = "projectdata_modified.json"; 
+const url = '/static/projectdata_modified.json';
 // Create a horizontal bar chart with a dropdown menu to display data for the selected country.
 
 // Function for bar chart plotting
