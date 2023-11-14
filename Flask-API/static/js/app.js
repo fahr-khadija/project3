@@ -42,42 +42,31 @@ function barChart(selectedCountries) {
 };
 
 // Function that builds the bubble chart
-function bubbleChart(selection) {
-  // Fetch the JSON data
-  d3.json(url).then((data) => {
-    console.log(`Data:`, data);
-
-    let countryDataList = data.projectdata;
-
-    // Filter data where Country matches the selection
-    let selectedCountryData = countryDataList.find(
-      (countryData) => countryData.Country === selection
-    );
-
-    // Trace data for the bubble chart
-    let trace = [
-      {
+  
+  // Modify the bubbleChart function for better visualization of two selected countries
+  function bubbleChart(selectedCountries) {
+    // Fetch the JSON data 
+    d3.json(url).then((data) => {
+      let countryDataList = data.projectdata;
+      let selectedCountriesData = countryDataList.filter((countryData) =>
+        selectedCountries.includes(countryData.Country)
+      );
+  
+      let trace = selectedCountriesData.map((selectedCountryData, index) => ({
         x: Object.keys(selectedCountryData).slice(1),
         y: Object.values(selectedCountryData).slice(1),
         text: Object.keys(selectedCountryData).slice(1),
-        mode: "markers",
+        mode: 'markers',
         marker: {
-          size: 50,
-          color: Object.values(selectedCountryData).slice(1),
+          size: 100,
+          color: index === 0 ? 'rgba(55, 128, 191, 0.7)' : 'rgba(255, 0, 0, 0.7)', // Blue for the first country, red for the second
         },
-      },
-    ];
-
-    // Apply the x-axis legend to the layout
-    let layout = {
-      xaxis: { title: "Attribute" },
-    };
-
-    // Use Plotly to plot the bubble chart
-    Plotly.newPlot("bubble", trace, layout);
-  });
-}
-
+        name: selectedCountryData.Country,
+      }));
+  
+      Plotly.newPlot('bubbleChart', trace, bubbleLayout);
+    });
+  }
 // Demographic function "demog"
 function demog(selection) {
   // Fetch the JSON data and console log it
