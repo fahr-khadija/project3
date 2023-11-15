@@ -3,7 +3,7 @@ from flask_cors import CORS
 import json
 
 # Load the modified JSON data
-with open('projectdata_modified.json', 'r') as json_file:
+with open('static/projectdata_modified.json', 'r') as json_file:
     endpoint_data = json.load(json_file)
 
 # Flask Setup
