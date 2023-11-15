@@ -1,5 +1,5 @@
 // Put your URL in a URL variable
-const url = "projectdata_modified.json"; 
+const url = "http://127.0.0.1:5000/api/v1.0/all_data"; 
 
 // Create a horizontal bar chart with a dropdown menu to display data for the selected country.
 
