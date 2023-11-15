@@ -1,4 +1,4 @@
-const url = 'http://127.0.0.1:5000/api/v1.0/all_data';
+const url = 'http://127.0.0.1:5000/all_data';
 
 const dataPromise = d3.json(url);
 console.log("Data Promise: ", dataPromise);

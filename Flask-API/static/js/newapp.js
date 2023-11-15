@@ -7,6 +7,8 @@ import { demog } from './demog.js';
 import { optionChanged } from './optionChanged.js';
 import { init } from './init.js';
 
+const url = 'http://127.0.0.1:5000/all_data';
+
 //  //  //  //  // Dropdown Menu //  //  //  //  //
 // put a variable for Dropdown Menu for Country1
 let dropdownMenu1 = d3.select('#selCountry1');

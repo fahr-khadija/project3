@@ -1,4 +1,5 @@
 // function "demog" to filter data for selected country and update the html accordingly based on the selected country
+const url = 'http://127.0.0.1:5000/all_data';
 
 export function demog(selectedCountries) {
     // Fetch the JSON data and console log it

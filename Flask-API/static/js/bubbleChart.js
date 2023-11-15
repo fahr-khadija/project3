@@ -1,3 +1,4 @@
+const url = 'http://127.0.0.1:5000/all_data';
 // Function that builds the bubble chart
 // Modify the bubbleChart function for better visualization of two selected countries with differents colors 
 export function bubbleChart(selectedCountries) {

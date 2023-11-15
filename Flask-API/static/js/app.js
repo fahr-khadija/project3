@@ -2,7 +2,7 @@
 // I've used the "Country" key directly for the dropdown menu options and selection to adapt to the url 
 //const url = "http://localhost:8000/projectdata_modified.json"; 
 // put the db under static so  flask can take it 
-   const url = '/static/projectdata_modified.json';
+const url = 'http://127.0.0.1:5000/all_data';
 
  // Create a horizontal bar chart with a dropdown menu to display data for the selected country.
 // Modify the barChart function for better visualization of two selected countries

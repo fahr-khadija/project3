@@ -1,4 +1,5 @@
 // barChart.js
+const url = 'http://127.0.0.1:5000/all_data';
 
 export function barChart(selectedCountries) {
     // Fetch the JSON data and console log it

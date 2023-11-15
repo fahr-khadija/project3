@@ -1,6 +1,7 @@
+const url = 'http://127.0.0.1:5000/all_data';
 // Create a horizontal bar chart with a dropdown menu to display data for the selected country.
 // Modify the barChart function for better visualization of two selected countries
-// Modify the barChart function to display entries on the y-axis and values on the x-axis with 2 colors for the countries selected 
+// Modify the barChart function to display entries on the y-axis and values on the x-axis with 2 colors for the countries selected
 
 export function barChart(selectedCountries) {
     // Fetch the JSON data and console log it

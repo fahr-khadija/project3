@@ -46,11 +46,12 @@ def welcome():
 #List all available api routes
     return (
         f"Available Routes:<br/>"
-        f"All Data: /api/v1.0/all_data<br/>"
+        f"All Data: /all_data<br/>"
+        f"Homepage: /home<br/>"
     )
 
 # Return the results of the precipitation analysis
-@app.route("/api/v1.0/all_data")
+@app.route("/all_data")
 def all_data():
 
     climate_data = pd.read_sql_table('climate', engine)

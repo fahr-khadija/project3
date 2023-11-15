@@ -1,3 +1,5 @@
+const url = 'http://127.0.0.1:5000/all_data';
+
 // Function for scatter plot
 export function scatterPlot(selectedCountries) {
     d3.json(url).then((data) => {
