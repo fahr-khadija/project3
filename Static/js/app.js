@@ -100,35 +100,43 @@ function barChart3(selectedCountries) {
   });
 }
 
-// Function that builds the bubble chart
-// Modify the bubbleChart function for better visualization of two selected countries
-  function bubbleChart(selectedCountries) {
-    // Fetch the JSON data 
-    d3.json(url).then((data) => {
+function bubbleChart(selectedCountries) {
+  // Fetch the JSON data 
+  d3.json(url).then((data) => {
       let countryDataList = data.projectdata;
       let selectedCountriesData = countryDataList.filter((countryData) =>
-        selectedCountries.includes(countryData.country)
+          selectedCountries.includes(countryData.country)
       );
-      const bubbleLayout = {
-        xaxis: { title: 'Attribute' },
-       };  
-      let trace = selectedCountriesData.map((selectedCountryData, index) => ({
-        x: Object.keys(selectedCountryData).slice(1),
-        y: Object.values(selectedCountryData).slice(1),
-        text: Object.keys(selectedCountryData).slice(1),
-        mode: 'markers',
-        marker: {
-          size: 100,
-          // add Blue for the first country, red for the second
-          color: index === 0 ? 'rgba(55, 128, 191, 0.7)' : 'rgba(255, 0, 0, 0.7)', // Blue for the first country, red for the second
-        },
-        name: selectedCountryData.country,
-      }));
-       // Plot the bubble chart with the selected country
-       Plotly.newPlot('bubbleChart', trace, bubbleLayout);
 
-    });
-  }
+      let trace = selectedCountriesData.map((selectedCountryData, index) => ({
+          x: ["Population"],
+          y: [
+              parseFloat(selectedCountryData["population"])
+          ],
+          text: ["Population"],
+          mode: 'markers',
+          marker: {
+              size: selectedCountryData["land_area_km2"] * 0.00005,
+              color: index === 0 ? 'rgba(55, 128, 191, 0.7)' : 'rgba(255, 0, 0, 0.7)',
+          },
+          name: selectedCountryData.country,
+      }));
+
+      const bubbleLayout = {
+          title: 'Bubble Chart visualization',
+          xaxis: {
+              title: 'Attributes',
+          },
+          yaxis: {
+              title: 'Values',
+          },
+      };
+
+      // Plot the bubble chart with the selected countries
+      Plotly.newPlot('bubbleChart', trace, bubbleLayout);
+  });
+}
+
 
 // Function for scatter plot
 function scatterPlot(selectedCountries) {
