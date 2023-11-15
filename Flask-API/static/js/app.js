@@ -199,10 +199,6 @@ function optionChanged(countryType, selectedCountry) {
   });
 }
 
-
-
-
-
 // Function to plot all charts when we have new selections for country 
 function plot(selectedCountries) {
   console.log(selectedCountries);
@@ -210,7 +206,7 @@ function plot(selectedCountries) {
   barChart(selectedCountries);
   bubbleChart(selectedCountries);
   scatterPlot(selectedCountries);
-  createMap(selectedCountries);
+  //createMap(selectedCountries);
 }
 
 
@@ -226,9 +222,10 @@ function init() {
     countryList.forEach((country) => {
       dropdownMenu.append('option').text(country).property('value', country);
     });
-
-    let initialCountries = countryList.slice(0, 2); // Select the first two countries
-    plot(initialCountries); // Pass the initial selection as an array
+// Select the first two countries algeria and angola 
+    let initialCountries = countryList.slice(0, 2); 
+    // Plot the initial selection as an array
+    plot(initialCountries); 
   });
 
   dropdownMenu.on('change', function () {
@@ -236,5 +233,49 @@ function init() {
     plot(selectedCountries);
   });
 };
+
+//  //  //  //  // //  //  //  //  // //  //  //  //  // 
+
+// Function to create a map
+function createMap(selectedCountries) {
+  // Fetch the JSON data and console log it
+  d3.json(url).then((data) => {
+    let countryDataList = data.projectdata;
+    let selectedCountriesData = countryDataList.filter((countryData) =>
+      selectedCountries.includes(countryData.Country)
+    );
+  });
+    //  map setup
+let myMap = L.map('map').setView([37.09, -95.71], 5);
+// Create the base layers.
+let street = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(myMap);
+
+let topo = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+  attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+});
+
+// Create a baseMaps object.
+let baseMaps = {
+  "Street Map": street,
+  "Topographic Map": topo
+};
+
+    // Add markers for selected countries
+    selectedCountriesData.forEach((selectedCountryData) => {
+      let lat = parseFloat(selectedCountryData.Latitude);
+      let lon = parseFloat(selectedCountryData.Longitude);
+
+      if (!isNaN(lat) && !isNaN(lon)) {
+        L.marker([lat, lon])
+          .addTo(map)
+          .bindPopup(selectedCountryData.Country)
+          .openPopup();
+      }
+    });
+  };
+
+//  //  //  //  // //  //  //  //  // 
 
 init();

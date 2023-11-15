@@ -2,35 +2,10 @@ from flask import Flask, jsonify, render_template
 from flask_cors import CORS
 import json
 
-import pandas as pd
+# Load the modified JSON data
+with open('projectdata_modified.json', 'r') as json_file:
+    endpoint_data = json.load(json_file)
 
-import sqlalchemy
-from sqlalchemy.ext.automap import automap_base
-from sqlalchemy.orm import Session
-from sqlalchemy import create_engine, func
-
-from flask import Flask, jsonify
-from flask_cors import CORS
-
-#################################################
-# Database Setup
-#################################################
-
-engine = create_engine('postgresql://postgres:postgres@localhost:5432/climate_change')
-
-# reflect an existing database into a new model
-Base = automap_base()
-
-# reflect the tables
-Base.prepare(autoload_with=engine)
-
-# Save references to each table
-climate = Base.classes.climate
-
-# Create our session (link) from Python to the DB
-session = Session(engine)
-
-#################################################
 # Flask Setup
 #################################################
 app = Flask(__name__)
