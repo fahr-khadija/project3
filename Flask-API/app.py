@@ -3,7 +3,7 @@ from flask_cors import CORS
 import json
 
 # Load the modified JSON data
-with open('/static/projectdata_modified.json', 'r') as json_file:
+with open('projectdata_modified.json', 'r') as json_file:
     endpoint_data = json.load(json_file)
 
 # Flask Setup
@@ -13,7 +13,7 @@ CORS(app)
 # Flask Routes
 @app.route("/")
 def homepage():
-    return render_template("index2.html")
+    return render_template("index.html")
 
 if __name__ == '__main__':
     app.run(debug=True)
