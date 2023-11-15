@@ -123,12 +123,9 @@ function bubbleChart(selectedCountries) {
       }));
 
       const bubbleLayout = {
-          title: 'Bubble Chart visualization',
-          xaxis: {
-              title: 'Attributes',
-          },
+          title: 'Land Mass vs Population',
           yaxis: {
-              title: 'Values',
+              title: 'Population in Millions',
           },
       };
 
