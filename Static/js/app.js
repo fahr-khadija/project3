@@ -7,41 +7,98 @@ const url = 'http://127.0.0.1:5000/all_data';
  // Create a horizontal bar chart with a dropdown menu to display data for the selected country.
 // Modify the barChart function for better visualization of two selected countries
 // Modify the barChart function to display entries on the y-axis and values on the x-axis with 2 colors for the countries selected 
-
 function barChart(selectedCountries) {
- // Fetch the JSON data and console log it
+  // Fetch the JSON data and console log it
   d3.json(url).then((data) => {
-     console.log(`Data:`, data);
-    let countryDataList = data.projectdata;
-    let selectedCountriesData = countryDataList.filter((countryData) =>
-      selectedCountries.includes(countryData.country)
-    );
+      let countryDataList = data.projectdata;
+      let selectedCountriesData = countryDataList.filter((countryData) =>
+          selectedCountries.includes(countryData.country)
+      );
 
-    let trace = selectedCountriesData.map((selectedCountryData, index) => ({
-      x: Object.values(selectedCountryData).slice(1, 11).reverse(), // Use values for x-axis
-      y: Object.keys(selectedCountryData).slice(1, 11).reverse(), // Use entries  for y-axis
-      type: 'bar',
-      marker: {
-        // add Blue for the first country, red for the second
-        color: index === 0 ? 'rgba(55, 128, 191, 0.7)' : 'rgba(255, 0, 0, 0.7)', 
-      },
-      name: selectedCountryData.country,
-      orientation: 'h',
-    }));
+      let trace = selectedCountriesData.map((selectedCountryData, index) => ({
+          x: ["Low-Carbon Electricity %"],
+          y: [
+              parseFloat(selectedCountryData["low_carbon_electricity_"])
+          ],
+          type: 'bar',
+          marker: {
+              color: index === 0 ? 'rgba(55, 128, 191, 0.7)' : 'rgba(255, 0, 0, 0.7)',
+          },
+          name: selectedCountryData.country,
+          orientation: 'v',
+      }));
 
-    const layout = {
-      title: 'Bar Chart visualisation',
-      xaxis: {
-        title: 'X-Axis entries values',
-      },
-      yaxis: {
-        title: 'Y-Axis entries names',
-        automargin: true,
-      },
-    };
-    Plotly.newPlot('barChart', trace, layout);
+      const layout = {
+          title: 'Low-Carbon Electricity %',
+          yaxis: {
+              automargin: true,
+          },
+      };
+      Plotly.newPlot('barChart', trace, layout);
   });
-};
+}
+
+function barChart2(selectedCountries) {
+  // Fetch the JSON data and console log it
+  d3.json(url).then((data) => {
+      let countryDataList = data.projectdata;
+      let selectedCountriesData = countryDataList.filter((countryData) =>
+          selectedCountries.includes(countryData.country)
+      );
+
+      let trace = selectedCountriesData.map((selectedCountryData, index) => ({
+          x: ["GDP ($ Per Capita)"],
+          y: [
+              parseFloat(selectedCountryData["gdp_per_capita"])
+          ],
+          type: 'bar',
+          marker: {
+              color: index === 0 ? 'rgba(55, 128, 191, 0.7)' : 'rgba(255, 0, 0, 0.7)',
+          },
+          name: selectedCountryData.country,
+          orientation: 'v',
+      }));
+
+      const layout = {
+          title: 'GDP ($ Per Capita)',
+          yaxis: {
+              automargin: true,
+          },
+      };
+      Plotly.newPlot('barChart2', trace, layout);
+  });
+}
+
+function barChart3(selectedCountries) {
+  // Fetch the JSON data and console log it
+  d3.json(url).then((data) => {
+      let countryDataList = data.projectdata;
+      let selectedCountriesData = countryDataList.filter((countryData) =>
+          selectedCountries.includes(countryData.country)
+      );
+
+      let trace = selectedCountriesData.map((selectedCountryData, index) => ({
+          x: ["CO2 Emissions"],
+          y: [
+              parseFloat(selectedCountryData["co2_emissions_metric_tons_per_capita"])
+          ],
+          type: 'bar',
+          marker: {
+              color: index === 0 ? 'rgba(55, 128, 191, 0.7)' : 'rgba(255, 0, 0, 0.7)',
+          },
+          name: selectedCountryData.country,
+          orientation: 'v',
+      }));
+
+      const layout = {
+          title: 'CO2 Emissions',
+          yaxis: {
+              automargin: true,
+          },
+      };
+      Plotly.newPlot('barChart3', trace, layout);
+  });
+}
 
 // Function that builds the bubble chart
 // Modify the bubbleChart function for better visualization of two selected countries
@@ -205,6 +262,8 @@ function plot(selectedCountries) {
   console.log(selectedCountries);
   demog(selectedCountries);
   barChart(selectedCountries);
+  barChart2(selectedCountries);
+  barChart3(selectedCountries);
   bubbleChart(selectedCountries);
   scatterPlot(selectedCountries);
   //createMap(selectedCountries);
