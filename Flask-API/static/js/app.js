@@ -4,9 +4,15 @@ let dropdownMenu1 = d3.select('#selCountry1');
 // Dropdown Menu for Country2
 let dropdownMenu2 = d3.select('#selCountry2');
 // Put your URL in a URL variable
-const url = '/static/projectdata_modified.json';
+const url = 'http://127.0.0.1:5000/api/v1.0/all_data';
 // const url ='http://localhost:8000/projectdata_modified.json';
 // Dummy layout for the bubble chart, customize as needed
+console.log("Hello therer")
+// Fetch the JSON data and console log it
+d3.json(url).then(function(data) {
+  console.log(data);
+});
+
 const bubbleLayout = {
   xaxis: { title: 'Attribute' },
 };
