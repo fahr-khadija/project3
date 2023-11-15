@@ -16,7 +16,7 @@ export function bubbleChart(selectedCountries) {
         text: Object.keys(selectedCountryData).slice(1),
         mode: 'markers',
         marker: {
-          size: 100,
+          size: 50,
           // add Blue for the first country, red for the second
           color: index === 0 ? 'rgba(55, 128, 191, 0.7)' : 'rgba(255, 0, 0, 0.7)', // Blue for the first country, red for the second
         },

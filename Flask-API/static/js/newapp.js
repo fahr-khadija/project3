@@ -1,5 +1,6 @@
 // Import functions from other files
 import { barChart } from './barChart.js';
+// import { barChart } from './barchartentries.js';
 import { bubbleChart } from './bubbleChart.js';
 import { scatterPlot } from './scatterPlot.js';
 import { demog } from './demog.js';
