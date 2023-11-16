@@ -6,7 +6,7 @@ const url = 'http://127.0.0.1:5000/all_data';
 
  // Create a horizontal bar chart with a dropdown menu to display data for the selected country.
 // Modify the barChart function for better visualization of two selected countries
-// Modify the barChart function to display entries on the y-axis and values on the x-axis with 2 colors for the countries selected 
+// Modify the barChart function to display entries on the y-axis and values on the x-axis with 2 colors for the countries selected
 function barChart(selectedCountries) {
   // Fetch the JSON data and console log it
   d3.json(url).then((data) => {
@@ -16,7 +16,7 @@ function barChart(selectedCountries) {
       );
 
       let trace = selectedCountriesData.map((selectedCountryData, index) => ({
-          x: ["Low-Carbon Electricity %"],
+          x: ["Low-Carbon Electricity"],
           y: [
               parseFloat(selectedCountryData["low_carbon_electricity_"])
           ],
@@ -31,6 +31,7 @@ function barChart(selectedCountries) {
       const layout = {
           title: 'Low-Carbon Electricity %',
           yaxis: {
+              title: '% of Total Energy',
               automargin: true,
           },
       };
@@ -47,7 +48,7 @@ function barChart2(selectedCountries) {
       );
 
       let trace = selectedCountriesData.map((selectedCountryData, index) => ({
-          x: ["GDP ($ Per Capita)"],
+          x: ["GDP"],
           y: [
               parseFloat(selectedCountryData["gdp_per_capita"])
           ],
@@ -62,6 +63,7 @@ function barChart2(selectedCountries) {
       const layout = {
           title: 'GDP ($ Per Capita)',
           yaxis: {
+              title: '$ per Capita',
               automargin: true,
           },
       };
@@ -93,6 +95,7 @@ function barChart3(selectedCountries) {
       const layout = {
           title: 'CO2 Emissions',
           yaxis: {
+              title: 'Metric Tons per Capita',
               automargin: true,
           },
       };
@@ -109,7 +112,7 @@ function bubbleChart(selectedCountries) {
       );
 
       let trace = selectedCountriesData.map((selectedCountryData, index) => ({
-          x: ["Population"],
+          x: ["Land Mass"],
           y: [
               parseFloat(selectedCountryData["population"])
           ],
@@ -135,40 +138,40 @@ function bubbleChart(selectedCountries) {
 }
 
 
-// Function for scatter plot
-function scatterPlot(selectedCountries) {
-  d3.json(url).then((data) => {
-    let countryDataList = data.projectdata;
-    let selectedCountriesData = countryDataList.filter((countryData) =>
-      selectedCountries.includes(countryData.country)
-    );
+// // Function for scatter plot
+// function scatterPlot(selectedCountries) {
+//   d3.json(url).then((data) => {
+//     let countryDataList = data.projectdata;
+//     let selectedCountriesData = countryDataList.filter((countryData) =>
+//       selectedCountries.includes(countryData.country)
+//     );
 
-    let traces = selectedCountriesData.map((selectedCountryData, index) => ({
-      x: Object.values(selectedCountryData).slice(1, 11),
-      y: Object.values(selectedCountryData).slice(11, 21),
-      mode: 'markers',
-      type: 'scatter',
-      name: selectedCountryData.country,
-      text: Object.values(selectedCountryData).slice(1, 11).map((value, i) => `${Object.keys(selectedCountryData)[i + 1]}: ${value}`),
-      marker: {
-        size: 10,
-        color: index === 0 ? 'rgba(226, 115, 74, 0.7)' : 'rgba(54, 134, 38, 0.7)', // Blue for the first country, red for the second
-      },
-    }));
+//     let traces = selectedCountriesData.map((selectedCountryData, index) => ({
+//       x: Object.values(selectedCountryData).slice(1, 11),
+//       y: Object.values(selectedCountryData).slice(11, 21),
+//       mode: 'markers',
+//       type: 'scatter',
+//       name: selectedCountryData.country,
+//       text: Object.values(selectedCountryData).slice(1, 11).map((value, i) => `${Object.keys(selectedCountryData)[i + 1]}: ${value}`),
+//       marker: {
+//         size: 10,
+//         color: index === 0 ? 'rgba(226, 115, 74, 0.7)' : 'rgba(54, 134, 38, 0.7)', // Blue for the first country, red for the second
+//       },
+//     }));
 
-    const layout = {
-      title: 'Scatter Plot visualisation',
-      xaxis: {
-        title: 'X-Axis entries values',
-      },
-      yaxis: {
-        title: 'Y-Axis entries names',
-      },
-    };
-    // Plot the scatterPlot  with the selected countries
-    Plotly.newPlot('scatterPlot', traces, layout);
-  });
-}
+//     const layout = {
+//       title: 'Scatter Plot visualisation',
+//       xaxis: {
+//         title: 'X-Axis entries values',
+//       },
+//       yaxis: {
+//         title: 'Y-Axis entries names',
+//       },
+//     };
+//     // Plot the scatterPlot  with the selected countries
+//     Plotly.newPlot('scatterPlot', traces, layout);
+//   });
+// }
 // function "demog" to filter data for selected country and update the html accordingly based on the selected country
 function demog(selectedCountries) {
   // Fetch the JSON data and console log it
