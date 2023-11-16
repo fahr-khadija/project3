@@ -22,7 +22,7 @@ function barChart(selectedCountries) {
           ],
           type: 'bar',
           marker: {
-              color: index === 0 ? 'rgba(55, 128, 191, 0.7)' : 'rgba(255, 0, 0, 0.7)',
+              color: index === 0 ? 'rgba(226, 115, 74, 0.7)' : 'rgba(54, 134, 38, 0.7)',
           },
           name: selectedCountryData.country,
           orientation: 'v',
@@ -53,7 +53,7 @@ function barChart2(selectedCountries) {
           ],
           type: 'bar',
           marker: {
-              color: index === 0 ? 'rgba(55, 128, 191, 0.7)' : 'rgba(255, 0, 0, 0.7)',
+              color: index === 0 ? 'rgba(226, 115, 74, 0.7)' : 'rgba(54, 134, 38, 0.7)',
           },
           name: selectedCountryData.country,
           orientation: 'v',
@@ -84,7 +84,7 @@ function barChart3(selectedCountries) {
           ],
           type: 'bar',
           marker: {
-              color: index === 0 ? 'rgba(55, 128, 191, 0.7)' : 'rgba(255, 0, 0, 0.7)',
+              color: index === 0 ? 'rgba(226, 115, 74, 0.7)' : 'rgba(54, 134, 38, 0.7)',
           },
           name: selectedCountryData.country,
           orientation: 'v',
@@ -117,7 +117,7 @@ function bubbleChart(selectedCountries) {
           mode: 'markers',
           marker: {
               size: selectedCountryData["land_area_km2"] * 0.00005,
-              color: index === 0 ? 'rgba(55, 128, 191, 0.7)' : 'rgba(255, 0, 0, 0.7)',
+              color: index === 0 ? 'rgba(226, 115, 74, 0.7)' : 'rgba(54, 134, 38, 0.7)',
           },
           name: selectedCountryData.country,
       }));
@@ -152,7 +152,7 @@ function scatterPlot(selectedCountries) {
       text: Object.values(selectedCountryData).slice(1, 11).map((value, i) => `${Object.keys(selectedCountryData)[i + 1]}: ${value}`),
       marker: {
         size: 10,
-        color: index === 0 ? 'rgba(55, 128, 191, 0.7)' : 'rgba(255, 0, 0, 0.7)', // Blue for the first country, red for the second
+        color: index === 0 ? 'rgba(226, 115, 74, 0.7)' : 'rgba(54, 134, 38, 0.7)', // Blue for the first country, red for the second
       },
     }));
 
