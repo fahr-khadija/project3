@@ -2,7 +2,7 @@
 
 
 
-## ![STA_Banner](https://tharawat.org/wp-content/uploads/2022/12/Website-header-e1670259531766-2048x901.png)
+## ![Energy](https://tharawat.org/wp-content/uploads/2022/12/Website-header-e1670259531766-2048x901.png)
 
 # project3 Goal
 Development of a Full-Stack Data Visualization Web Application for Interactive Exploration of Datasets: Analysis and Visualization of Energy Trends (Project1)
@@ -59,7 +59,7 @@ In the preceding project1
          SQLAlchemy to setup the database connection
          FLASK to host the data and the webpage
 ## App.py
-## ![STA_Banner]https://github.com/fahr-khadija/project3/blob/main/database_app.py)
+## ![app.py]https://github.com/fahr-khadija/project3/blob/main/database_app.py)
          
 
 
