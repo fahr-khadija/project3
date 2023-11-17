@@ -54,9 +54,9 @@ In the preceding project1
               app.py
 
 ## Database
-### CSV file is from our PROJECT 1 data
-### PANDAS to read the SQL file from the database
-### SQLAlchemy to setup the database connection
-### FLASK to host the data and the webpage
+       ◦ CSV file is from our PROJECT 1 data
+         PANDAS to read the SQL file from the database
+         SQLAlchemy to setup the database connection
+         FLASK to host the data and the webpage
 
 
