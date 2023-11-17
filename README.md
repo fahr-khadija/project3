@@ -30,11 +30,12 @@ In the preceding project1
     ###  3. How does climate change affect specific countries or regions in terms of their energy practices and policies? 
 # Interactive web page using Flask 
 ![flask_development_server_diagram](https://github.com/fahr-khadija/project3/assets/100168693/db652e80-600e-4494-a9c7-d2fe95571fde)
- # Project structure
- # Steps to build a simple web page using Flask:
+ ## Project structure
+ ## Steps to build a simple web page using Flask:
    ###  1. Create mookup page:
          we use this mookup app to create our design of the web page  https://app.moqups.com/     
          https://app.moqups.com/5kKQrQQrlHi8gfX8tSXZGtFCNHLcjGMx/view/page/a3fbc0074
+         
   ![image](https://github.com/fahr-khadija/project3/assets/100168693/df68a862-7ed7-4e8e-9700-4f87b974d2a2)
 
    ###  2. Create Project Structure:
@@ -43,9 +44,13 @@ In the preceding project1
           /Project3
               /static
                   /css
+                     style.css
                   /js
+                     app.js
+                     function.js
                   /images
               /templates
+                 index.html
               app.py
 
 ## Database
