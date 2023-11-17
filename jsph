@@ -1,0 +1,23 @@
+let labels = Object.keys(data.url);
+
+// Extract values from the 
+let pievalua = Object.values(data.url);
+
+// Display the default plot
+function init() {
+  let plotData = [{
+    values: pievalua,
+    labels: labels,
+    type: "pie"
+  }];
+
+  let layout = {
+    height: 600,
+    width: 800
+  };
+
+  Plotly.newPlot("pie", plotData, layout);
+}
+
+// Call the init function to display the pie chart
+init();
