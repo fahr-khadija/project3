@@ -7,7 +7,6 @@
 # project3 Goal
 Development of a Full-Stack Data Visualization Web Application for Interactive Exploration of Datasets: Analysis and Visualization of Energy Trends (Project1)
 
-
 # Why we choose this topic:
 
 The relationship between energy usage and global warming is a critical subject in today's world. This data analysis helps to explore this relationship and highlight it's significance, which is very important for policymakers, governments, researchers, and the general public. In our previous data analysis project1 , we investigated the relationship between low-carbon energy, temperatures and CO2 emissions.
@@ -26,15 +25,15 @@ In the preceding project1
  
 ####  In this phase, our focus remains on the in-depth analysis of the gathered data, aiming to address the following research inquiries:
 # Research Questions
-###  1. How does geographical location influence the production and consumption of low-carbon or renewable energy? 
-###  2. What is the impact of land mass on the production and consumption of low-carbon or renewable energy? 
+###  1. How does geographical location impact energy? 
+###  2. What is the impact of land mass on the  energy? 
 ###  3. How does climate change affect specific countries or regions in terms of their energy practices and policies? 
 
-# Data analysis process 
-### Datasets to be used 
-###  weatherstack - Real-Time World Weather REST API 
-### https://www.kaggle.com/datasets/anshtanwar/global-data-on-sustainable-energy, 
-### https://www.kaggle.com/datasets/nelgiriyewithana/countries-of-the-world-2023
-### Global Country Information Dataset 2023 (kaggle.com) 
+# Project structure
+## Database
+### CSV file is from our PROJECT 1 data
+### PANDAS to read the SQL file from the database
+### SQLAlchemy to setup the database connection
+### FLASK to host the data and the webpage
 
-## Data Collection  
+
