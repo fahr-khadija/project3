@@ -1,3 +1,6 @@
+![STA_Banner](https://user-images.githubusercontent.com/100168693/158027369-eb20fa1b-73dd-47c9-a26b-933dc1e13eb1.jpg)
+![STA_Banner](https://tharawat.org/wp-content/uploads/2022/12/Website-header-e1670259531766-2048x901.png)
+
 # project3
 Development of a Full-Stack Data Visualization Web Application for Interactive Exploration of Datasets: Analysis and Visualization of Sustainable Energy Trends (Project1)
 
