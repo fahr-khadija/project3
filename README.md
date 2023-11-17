@@ -23,13 +23,26 @@ In the preceding project1
 4. Predicting the future energy demands in relation to potential climate variations.
 5. Setting benchmarks for the adoption of low-carbon electricity and monitoring progress.
  
-####  In this phase, our focus remains on the in-depth analysis of the gathered data, aiming to address the following research inquiries:
+       ####  In this phase, our focus remains on the in-depth analysis of the gathered data, aiming to address the following research inquiries:
 # Research Questions
-###  1. How does geographical location impact energy? 
-###  2. What is the impact of land mass on the  energy? 
-###  3. How does climate change affect specific countries or regions in terms of their energy practices and policies? 
+    ###  1. How does geographical location impact energy? 
+    ###  2. What is the impact of land mass on the  energy? 
+    ###  3. How does climate change affect specific countries or regions in terms of their energy practices and policies? 
+# Interactive web page using Flask 
+![flask_development_server_diagram](https://github.com/fahr-khadija/project3/assets/100168693/db652e80-600e-4494-a9c7-d2fe95571fde)
+ # Project structure
+ # Steps to build a simple web page using Flask:
+   ###  1. Create Project Structure:
+        ◦ Create a new folder for the project.Project3
+        ◦ Inside the project folder, create the following structure:
+          /Project3
+              /static
+                  /css
+                  /js
+                  /images
+              /templates
+              app.py
 
-# Project structure
 ## Database
 ### CSV file is from our PROJECT 1 data
 ### PANDAS to read the SQL file from the database
