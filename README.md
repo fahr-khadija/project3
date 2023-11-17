@@ -1,7 +1,11 @@
+# Energy Analysis Dashboard
+### Country Comparison
+
+
 ![STA_Banner](https://tharawat.org/wp-content/uploads/2022/12/Website-header-e1670259531766-2048x901.png)
 
-# project3
-Development of a Full-Stack Data Visualization Web Application for Interactive Exploration of Datasets: Analysis and Visualization of Sustainable Energy Trends (Project1)
+# project3 Goal
+Development of a Full-Stack Data Visualization Web Application for Interactive Exploration of Datasets: Analysis and Visualization of Energy Trends (Project1)
 
 
 # Why we choose this topic:
