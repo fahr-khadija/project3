@@ -1,15 +1,16 @@
 # project3
 Development of a Full-Stack Data Visualization Web Application for Interactive Exploration of Datasets: Analysis and Visualization of Sustainable Energy Trends (Project1)
 
+
 # Why we choose this topic:
 
-Global warming is a critical subject in today's world.
-Understanding the different parameters in relation to this subject is very important for policymakers, governments, researchers, and the general public. 
-This data analysis based on reel Data will help to explore this relationship and highlight its significance.
+The relationship between energy usage and global warming is a critical subject in today's world. This data analysis helps to explore this relationship and highlight it's significance, which is very important for policymakers, governments, researchers, and the general public. In our previous data analysis project1 , we investigated the relationship between low-carbon energy, temperatures and CO2 emissions.
+ https://github.com/yosieph/Project1
+In this dashboard, we dive deeper into our analysis by comparing 2 selected countries. We compare their location, GPD, CO2 Emission, land mass, and other factors.
 
 # Project Objective 
 
-In the preceding project1  https://github.com/yosieph/Project1
+In the preceding project1  
 , we provided recommendations for future research, including:
 1. Conducting a comprehensive analysis of the diverse factors influencing the adoption of low-carbon and renewable energy sources, encompassing geographical, socioeconomic, and demographic aspects.
 2. Evaluating the overall environmental impact of specific countries or regions.
