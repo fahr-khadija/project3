@@ -238,7 +238,6 @@ function plot(selectedCountries) {
   barChart2(selectedCountries);
   barChart3(selectedCountries);
   bubbleChart(selectedCountries);
-  scatterPlot(selectedCountries);
 };
 
 
