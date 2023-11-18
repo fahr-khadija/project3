@@ -164,8 +164,8 @@ function demog(selectedCountries) {
     // Log the entries array to the  console
     console.log(selectedCountriesData);
   });
-
 }
+
  //  //  //  //  // Dropdown Menu //  //  //  //  //
 // put a variable for Dropdown Menu for Country1
 let dropdownMenu1 = d3.select('#selCountry1');
@@ -264,6 +264,5 @@ function init() {
     plot(selectedCountries);
   });
 };
-
 
 init();
